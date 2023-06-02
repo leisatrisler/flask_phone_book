@@ -11,8 +11,6 @@ if __name__ == '__main__':
     app.run()
 
 db = SQLAlchemy(app)
-with app.app_context():
-    db.create_all()
 
 migrate = Migrate(app, db)
 
