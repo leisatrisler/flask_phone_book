@@ -1,7 +1,8 @@
-from app import app
+from app import app, db
 from flask import render_template, redirect, url_for, flash
 from app.forms import PLL_Address_Book
 from app.models import Address
+
 
 
 @app.route('/')
@@ -9,7 +10,7 @@ def index():
     return render_template ("index.html")
    
 
-@app.route('/address', methods=["GET", "POST"])
+@app.route('/pll_address', methods=["GET", "POST"])
 def pll_address():
     form = PLL_Address_Book()
     print("hello world")
@@ -27,6 +28,6 @@ def pll_address():
         #     flash('Invalid username and/or email', 'danger')
         #     return redirect(url_for('pll_address'))
         # else:
-        #     flash(f'{first_name} has successfully added another PLL', 'Great Job')
-        #     return redirect(url_for('pll_address'))
+        flash(f'{first_name} has successfully added another PLL', 'Great Job')
+        return redirect(url_for('pll_address'))
     return render_template('pll_address.html', form=form)
