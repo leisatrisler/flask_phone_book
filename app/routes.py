@@ -13,12 +13,11 @@ def pll_address():
     form = PLL_Address_Book()
     if form.validate_on_submit():
         print('Form Validated!')
-        username = form.username.data
-        print(username)
-        if username != 'Pretty Little Liar' or  'secretcanyoukeepit':
+        first_name = form.first_name.data
+        if first_name != 'Pretty Little Liar' or  'secretcanyoukeepit':
             flash('Invalid username and/or email', 'danger')
-            return redirect(url_for('ppl address'))
+            return redirect(url_for('pll_address'))
         else:
-            flash(f'{username} has successfully added another PLL', 'Great Job')
+            flash(f'{first_name} has successfully added another PLL', 'Great Job')
             return redirect(url_for('pll_address'))
     return render_template('pll_address.html', form=form)
